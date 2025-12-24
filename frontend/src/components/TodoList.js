@@ -116,8 +116,10 @@ function TodoList({ username, onLogout }) {
                     placeholder="New Task"
                     value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
+                    style={{padding:'8px', borderRadius:'4px', border:'1px solid #c1bebeff'}}
                 />
-                <button className="btn btn-outline-success" type="submit">Add Task</button>
+                <button className="btn btn-primary" type="submit" style={{padding:'8px', borderRadius:'4px', border:'1px solid #c1bebeff'}}>
+                    Add Task</button>
             </form>
 
             <ul style={{ display: 'table', listStyleType: 'none',  padding: 0, marginLeft: 'auto', marginRight: 'auto', borderTop: '1.5px solid #727070ff', minWidth: '300px' }}>

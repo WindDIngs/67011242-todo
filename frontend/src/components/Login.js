@@ -50,25 +50,35 @@ function Login({ onLogin }) {
     };
 
     return (
-        <div>
-            <h2 style={{}}>
-                Login (Username Only)
-                </h2>
-            <form onSubmit={handleSubmit} style={{marginTop: '5px',marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-                <input
-                    type="text"
-                    placeholder="Enter your username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    style={{marginTop:'10px', padding:'8px', width:'200px', borderRadius:'4px', border:'1px solid #ccc'}}
-                />
-                <button type="submit"
-                    className="btn btn-outline-primary"
-                    style={{marginLeft:'10px', marginTop:'10px', padding:'8px'}}> 
-                    Login
-                    </button>
-            </form>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+            <table style={{ border: '1px solid #ccc', borderCollapse: 'collapse', textAlign: 'center' }}>
+                <thead>
+                    <tr>
+                        <th style={{ padding: '20px', backgroundColor: '#f8f9fa', borderBottom: '1px solid #ccc' }}>
+                            <h2 style={{ margin: 0 }}>Login (Username Only)</h2>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style={{ padding: '30px' }}>
+                            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px' }}>
+                                <input
+                                    type="text"
+                                    placeholder="Enter your username"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    style={{ padding: '8px', width: '200px', borderRadius: '4px', border: '1px solid #ccc' }}
+                                />
+                                <button type="submit" className="btn btn-outline-primary" style={{ padding: '8px 16px' }}>
+                                    Login
+                                </button>
+                            </form>
+                            {error && <p style={{ color: 'red', marginTop: '15px' }}>{error}</p>}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }
