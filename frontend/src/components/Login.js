@@ -1,5 +1,6 @@
 // frontend/src/components/Login.js
 import React, { useState } from 'react';
+import logo from '../ceip_logo.png';    
 
 const API_URL = 'http://localhost:5001/api';
 
@@ -50,15 +51,22 @@ function Login({ onLogin }) {
 
     return (
         <div>
-            <h2>Login (Username Only)</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 style={{}}>
+                Login (Username Only)
+                </h2>
+            <form onSubmit={handleSubmit} style={{marginTop: '5px',marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
                 <input
                     type="text"
                     placeholder="Enter your username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    style={{marginTop:'10px', padding:'8px', width:'200px', borderRadius:'4px', border:'1px solid #ccc'}}
                 />
-                <button type="submit">Login</button>
+                <button type="submit"
+                    className="btn btn-outline-primary"
+                    style={{marginLeft:'10px', marginTop:'10px', padding:'8px'}}> 
+                    Login
+                    </button>
             </form>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>

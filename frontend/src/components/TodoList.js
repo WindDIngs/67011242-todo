@@ -104,33 +104,36 @@ function TodoList({ username, onLogout }) {
     };
 
     return (
-        <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2>Todo List for: {username}</h2>
-                <button onClick={handleLogout}>Logout</button>
+        <div style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+            <div style={{justifyContent: 'space-between', alignItems: 'center',display: 'block', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+                <h3>Todo List for: {username}</h3>
+                <button className="btn btn-outline-danger" onClick={handleLogout} style={{ marginTop:'0px', marginBottom: '5px'}}>Logout</button>
             </div>
             
-            <form onSubmit={handleAddTodo}>
+            <form onSubmit={handleAddTodo} style={{marginTop: '5px',marginBottom: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
                 <input
                     type="text"
                     placeholder="New Task"
                     value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
                 />
-                <button type="submit">Add Task</button>
+                <button className="btn btn-outline-success" type="submit">Add Task</button>
             </form>
 
-            <ul>
+            <ul style={{ display: 'table', listStyleType: 'none',  padding: 0, marginLeft: 'auto', marginRight: 'auto', borderTop: '1.5px solid #727070ff', minWidth: '300px' }}>
+                
                 {todos.map(todo => (
-                    <li key={todo.id} style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>
-                        <input
-                            type="checkbox"
-                            checked={!!todo.done} // Convert MySQL's 0/1 to boolean
-                            onChange={() => handleToggleDone(todo.id, todo.done)}
-                        />
-                        {todo.task} 
+                    <li key={todo.id} style={{ marginTop: '10px', marginBottom: '10px', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '12px', backgroundColor: '#f9fafb', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <input
+                                type="checkbox"
+                                checked={!!todo.done} // Convert MySQL's 0/1 to boolean
+                                onChange={() => handleToggleDone(todo.id, todo.done)}
+                            />
+                            <span style={{ textDecoration: todo.done ? 'line-through' : 'none' }}>{todo.task}</span>
+                            <button className="btn btn-outline-danger" onClick={() => handleDeleteTodo(todo.id)} style={{ marginLeft: '15px', padding: '5px 10px', fontSize: '14px'}}>Delete</button>
+                        </div>
                         <small> (Updated: {new Date(todo.updated).toLocaleString()})</small>
-                        <button onClick={() => handleDeleteTodo(todo.id)} style={{ marginLeft: '10px' }}>Delete</button>
                     </li>
                 ))}
             </ul>
